@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공지/뉴스 | 공간정보융합연구실</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__brand">
+        <img src="assets/img/logo/cwnu.png" alt="국립창원대학교" class="nav__logo nav__logo--cwnu" />
+        <img src="assets/img/logo/gcl.png" alt="GCL 로고" class="nav__logo nav__logo--gcl" />
+        <span>공간정보융합연구실</span>
+      </a>
+      <button class="nav__toggle" aria-label="메뉴 열기">☰</button>
+      <ul class="nav__menu">
+        <li><a href="index.html">소개</a></li>
+        <li class="nav__dropdown">
+          <a href="professor.html">멤버 ▾</a>
+          <ul class="nav__submenu">
+            <li><a href="professor.html">지도교수</a></li>
+            <li><a href="members.html">연구원</a></li>
+            <li><a href="alumni.html">졸업생</a></li>
+          </ul>
+        </li>
+        <li><a href="research.html">연구/논문</a></li>
+        <li><a href="equipment.html">장비보유현황</a></li>
+        <li><a href="news.html">공지/뉴스</a></li>
+        <li><a href="contact.html">연락처</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <p id="detail-meta" style="margin:0 0 10px;"></p>
+      <h1 id="detail-title" style="font-size:clamp(1.4rem,2.8vw,1.9rem);">게시글을 불러오는 중…</h1>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <article id="detail-body" style="max-width:760px;font-size:1.02rem;"></article>
+      <p style="margin-top:40px;">
+        <a href="news.html" class="btn btn--ghost">← 목록으로</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div><strong>공간정보융합연구실 (Geo-Information Convergence Lab.)</strong><br />국립창원대학교 스마트그린공학부 환경에너지공학전공</div>
+        <div>Tel. 055-213-3747 · Email. landpkh@changwon.ac.kr</div>
+      </div>
+      <p style="margin: 20px 0 0; opacity: 0.7;">© 2026 Geo-Information Convergence Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/news-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // URL의 ?id= 파라미터로 게시글 찾기
+    (function () {
+      const id = parseInt(new URLSearchParams(location.search).get('id'), 10);
+      const item = (window.NEWS || []).find(function (n) { return n.id === id; });
+      const titleEl = document.getElementById('detail-title');
+      const metaEl = document.getElementById('detail-meta');
+      const bodyEl = document.getElementById('detail-body');
+      if (!item) {
+        titleEl.textContent = '게시글을 찾을 수 없습니다';
+        bodyEl.innerHTML = '<p>삭제되었거나 잘못된 주소입니다. <a href="news.html">공지/뉴스 목록</a>에서 다시 선택해 주세요.</p>';
+        return;
+      }
+      document.title = item.title + ' | 공간정보융합연구실';
+      titleEl.textContent = item.title;
+      metaEl.innerHTML = '<span class="badge">' + item.tag + '</span> ' +
+        '<span style="color:var(--color-text-soft);font-size:0.92rem;margin-left:8px;">' + item.date + '</span>';
+      bodyEl.innerHTML = item.body;
+    })();
+  </script>
+</body>
+</html>

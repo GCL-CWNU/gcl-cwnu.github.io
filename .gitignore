@@ -1,0 +1,12 @@
+# 작업 원본 파일 (배포 제외)
+공간정보융합연구실_소개ppt.pptx
+*.docx
+photo&movie/
+Alumi_thesis/
+
+# 로컬 도구 설정
+.claude/
+
+# 임시 파일
+_*.txt
+_*.jpg
