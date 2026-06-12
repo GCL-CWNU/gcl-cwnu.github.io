@@ -83,10 +83,11 @@ img { max-width: 100%; display: block; }
   min-width: 0;
 }
 .nav__brand:hover { text-decoration: none; color: var(--color-accent); }
+.nav__brand span { white-space: nowrap; }
 .nav__logo { display: block; width: auto; }
 .nav__logo--cwnu { height: 28px; }
 .nav__logo--gcl { height: 40px; }
-@media (max-width: 900px) {
+@media (max-width: 560px) {
   .nav__logo--cwnu { display: none; }   /* 좁은 화면에서는 대학 로고 숨김 */
 }
 .nav__toggle {
@@ -112,6 +113,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   font-size: 0.94rem;
   letter-spacing: -0.01em;
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
 .nav__menu a:hover { color: var(--color-text); text-decoration: none; }
@@ -568,6 +570,123 @@ table.data tbody tr:hover { background: var(--color-bg-soft); }
 .site-footer strong { color: #fff; }
 .site-footer .footer-top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 
+/* ---------- ENVI-LABS 플로팅 버튼 ---------- */
+.fab-envilabs {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 12px 14px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.06), 0 16px 32px -8px rgba(15, 23, 42, 0.22);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fab-envilabs:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(15, 23, 42, 0.08), 0 22px 40px -8px rgba(8, 145, 178, 0.35);
+}
+.fab-envilabs img {
+  height: 30px;
+  width: auto;
+  border-radius: 6px;
+}
+@media (max-width: 560px) {
+  .fab-envilabs { right: 14px; bottom: 14px; padding: 10px 16px 10px 12px; font-size: 0.84rem; }
+  .fab-envilabs img { height: 24px; }
+}
+
+/* ---------- 사업영역 스텝 도식 (ENVI-LABS) ---------- */
+.flow { position: relative; margin-top: 8px; }
+.flow::before {                    /* 세로 연결선 */
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 28px;
+  bottom: 28px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-2));
+  opacity: 0.25;
+}
+.flow-item {
+  position: relative;
+  display: flex;
+  gap: 22px;
+  padding: 18px 0;
+}
+.flow-num {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #fff;
+  background: var(--grad);
+  box-shadow: 0 6px 14px -4px rgba(8, 145, 178, 0.5);
+  z-index: 1;
+}
+.flow-card {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flow-card__text { flex: 1.4; min-width: 260px; }
+.flow-card__text h3 {
+  margin: 4px 0 2px;
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.flow-card__text h3 small {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0;
+}
+.flow-card__text p { margin: 8px 0 12px; color: var(--color-text-soft); font-size: 0.94rem; }
+.flow-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.flow-chips li {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.flow-card__img {
+  flex: 1;
+  min-width: 220px;
+  max-width: 340px;
+}
+.flow-card__img img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px) {
+  .flow::before { left: 21px; }
+  .flow-num { width: 44px; height: 44px; font-size: 0.92rem; }
+  .flow-item { gap: 14px; }
+}
+
 /* ---------- 스크롤 리빌 애니메이션 ---------- */
 .reveal {
   opacity: 0;
@@ -583,7 +702,8 @@ table.data tbody tr:hover { background: var(--color-bg-soft); }
 }
 
 /* ---------- 반응형 ---------- */
-@media (max-width: 768px) {
+/* 메뉴가 8개라 1080px 이하에서는 햄버거 메뉴로 전환 */
+@media (max-width: 1080px) {
   .nav__toggle { display: block; }
   .nav__menu {
     position: absolute;
@@ -602,7 +722,7 @@ table.data tbody tr:hover { background: var(--color-bg-soft); }
   .nav__menu a { padding: 12px; }
   .nav__menu > li > a.is-active::after { display: none; }
 
-  /* 모바일에서는 드롭다운을 펼친 상태로 표시 */
+  /* 햄버거 메뉴에서는 드롭다운을 펼친 상태로 표시 */
   .nav__submenu {
     position: static;
     display: block;
@@ -612,7 +732,9 @@ table.data tbody tr:hover { background: var(--color-bg-soft); }
     min-width: 0;
   }
   .nav__submenu a { padding: 8px 12px; font-size: 0.92rem; color: var(--color-text-soft); }
+}
 
+@media (max-width: 768px) {
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .hero { padding: 70px 0 64px; }
