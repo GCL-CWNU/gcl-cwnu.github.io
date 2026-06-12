@@ -61,21 +61,6 @@ window.NEWS = [
       기술로, 연구실이 보유한 8번째 등록 특허입니다.</p>`
   },
   {
-    id: 2,
-    date: "2024.08",
-    tag: "논문",
-    title: "국제논문 게재: Building and Environment — UAV 영상과 ENVI-met 기반 도시 물리·열환경 비교",
-    body: `
-      <p>우리 연구실의 논문이 국제 저명 학술지 <strong>Building and Environment</strong>에 게재되었습니다.</p>
-      <ul>
-        <li><strong>제목</strong>: Comparison of urban physical environments and thermal properties extracted from unmanned aerial vehicle images and ENVI-met model simulations</li>
-        <li><strong>학술지</strong>: Building and Environment (2024.08)</li>
-        <li><strong>DOI</strong>: <a href="https://doi.org/10.1016/j.buildenv.2024.111705" target="_blank" rel="noopener">10.1016/j.buildenv.2024.111705</a></li>
-      </ul>
-      <p>UAV 영상에서 추출한 도시 물리환경 정보와 ENVI-met 미기후 모델 시뮬레이션
-      결과를 비교·검증한 연구입니다.</p>`
-  },
-  {
     id: 1,
     date: "상시",
     tag: "기술창업",
